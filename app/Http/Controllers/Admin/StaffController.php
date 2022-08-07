@@ -45,13 +45,14 @@ class StaffController extends BaseController
             'name' => 'required|max:255',
             'designation' => 'required',
             'description' => 'required',
-            'image' => 'max:12288|mimes:jpg,jpeg,png',
+            'image' => 'required|max:12288|mimes:jpg,jpeg,png',
         ],
         [
             'name.required' => 'Please provide name for the staff.',
             'name.max' => 'Title length exceed.',
             'description.required' => 'Description required.',
             'designation.required' => 'designation required.',
+            'image.required' => 'Image required',
             'image.max' => 'Too large file.',
             'image.mimes' => 'mimes:jpg,jpeg,png',
         ]);
@@ -100,7 +101,7 @@ class StaffController extends BaseController
            'name' => 'required|max:255',
             'designation' => 'required',
             'description' => 'required',
-            'image' => 'max:12288|mimes:jpg,jpeg,png',
+            'image' => 'sometimes|max:12288|mimes:jpg,jpeg,png',
         ],
         [
             'name.required' => 'Please provide name for the staff.',

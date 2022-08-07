@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>{{$setting->site_name}}</title>
-  <meta content="" name="{{$setting->meta_title}}">
+  <meta content="description" name="{{$setting->meta_title}}">
 
   <!-- Favicons -->
   <link href="{{ asset('image/sitesettings/'.$setting->favicon)}}" rel="icon">

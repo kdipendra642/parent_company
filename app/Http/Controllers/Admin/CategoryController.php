@@ -44,7 +44,7 @@ class CategoryController extends BaseController
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'max:500',
-            'image' => 'max:12288|mimes:jpg,jpeg,png',
+            'image' => 'required|max:12288|mimes:jpg,jpeg,png',
         ],
         [
             'title.required' => 'Please provide title for the category.',
@@ -98,6 +98,8 @@ class CategoryController extends BaseController
             'title.required' => 'Please provide title for the banner.',
             'title.max' => 'Title length exceed.',
             'description.max' => 'Too long description.',
+            'image.mimes' => 'mimes:jpg,jpeg,png',
+            'image.max' => 'Image too large',
         ]);
 
         if($request->hasfile('image')) {

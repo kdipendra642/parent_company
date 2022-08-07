@@ -89,6 +89,7 @@ class PostsController extends BaseController
             $imgData->save();
         }
 
+
         $request->session()->flash('success_message', $this->panel . ' successfully added.');
         return redirect()->route($this->base_route);
     }
