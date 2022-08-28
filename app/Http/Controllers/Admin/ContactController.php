@@ -18,23 +18,24 @@ class ContactController extends Controller
     protected $model;
 
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new Contact();
     }
 
     public function index()
     {
-        $contact = $this->model::all();   
+        $contact = $this->model::all();
         return view('admin.contact.index', compact('contact'));
     }
 
-   
+
     public function create()
     {
         //
     }
 
-    
+
     public function store(Request $request)
     {
 
@@ -51,25 +52,24 @@ class ContactController extends Controller
 
         // $contact = 'Thank you for your message we will contact you soon.';
 
-        Mail::to('kdipendra642@gmail.com')->send(new Message($details));
-        return back()->with('success', 'Your message has been sent we will contact you soon.' );
-        
+        // Mail::to('kdipendra642@gmail.com')->send(new Message($details));
+        return back()->with('success', 'Your message has been sent we will contact you soon.');
     }
 
-   
+
     public function show($id)
     {
         //
     }
 
-  
+
     public function edit($id)
     {
         $contact = $this->model::find($id);
-        return view($this->view_path.'.edit', compact('contact'));
+        return view($this->view_path . '.edit', compact('contact'));
     }
 
-    
+
     public function update(Request $request, $id)
     {
         $contact = $this->model::find($id);
@@ -81,7 +81,7 @@ class ContactController extends Controller
         return redirect()->route($this->base_route);
     }
 
-   
+
     public function destroy(Request $request, $id)
     {
         $contact = $this->model::find($id);

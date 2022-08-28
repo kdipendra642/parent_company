@@ -100,7 +100,7 @@
                                     </div>
                                     <div class="form-group ">
                                         <label for="status" class="control-label col-lg-2">Feature</label>
-                                        <input type="checkbox" {{ $posts->status == 1 ? 'checked' : '' }} style="width: 20px; float:right; right:150px" class="checkbox form-control" id="feature" name="feature">
+                                        <input type="checkbox" {{ $posts->feature == 1 ? 'checked' : '' }} style="width: 20px; float:right; right:150px" class="checkbox form-control" id="feature" name="feature">
                                     </div>
                                 </div>
                             </section>

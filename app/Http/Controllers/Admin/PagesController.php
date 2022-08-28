@@ -18,45 +18,47 @@ class PagesController extends BaseController
     protected $model;
 
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new Pages();
         $this->folder_path = getcwd() . DIRECTORY_SEPARATOR . 'image' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR;
-        
     }
-   
+
     public function index()
     {
         $pages = $this->model::all();
-        return view(parent::loadDefaultDataToView($this->view_path.'.index'), compact('pages'));
+        return view(parent::loadDefaultDataToView($this->view_path . '.index'), compact('pages'));
     }
 
-   
+
     public function create()
     {
-        return view(parent::loadDefaultDataToView($this->view_path.'.create'));
+        return view(parent::loadDefaultDataToView($this->view_path . '.create'));
     }
 
-   
+
     public function store(Request $request)
     {
         // dd($request->all());
         $pages = $this->model;
 
-        $validatedData = $request->validate([
-            'title' => 'required|max:1000',
-            'sub_title' => 'max:1000',
-            'description' => 'required',
-            'cover' => 'required|max:12288|mimes:jpg,jpeg,png',
-        ],
-        [
-            'title.required' => 'Provide title for the post.',
-            'title.max' => 'Title length exceed.',
-            'sub_title' => 'Sub title too long.',
-            'description' => 'This field is required.',
-            'cover.required' => 'Please provide any image.',
-            'cover.max' => 'Too large file.',
-            'cover.mimes' => 'Image must be in jpg, png or jpeg format.',
-        ]);
+        $validatedData = $request->validate(
+            [
+                'title' => 'required|max:1000',
+                'sub_title' => 'max:1000',
+                'description' => 'required',
+                'cover' => 'required|max:12288|mimes:jpg,jpeg,png',
+            ],
+            [
+                'title.required' => 'Provide title for the post.',
+                'title.max' => 'Title length exceed.',
+                'sub_title' => 'Sub title too long.',
+                'description' => 'This field is required.',
+                'cover.required' => 'Please provide any image.',
+                'cover.max' => 'Too large file.',
+                'cover.mimes' => 'Image must be in jpg, png or jpeg format.',
+            ]
+        );
 
         $pages->title = $request->input('title');
         $pages->sub_title = $request->input('sub_title');
@@ -70,7 +72,7 @@ class PagesController extends BaseController
             parent::createFolderIfNotExist($this->folder_path);
             $file = $request->file('cover');
             $extension = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
+            $filename = time() . '.' . $extension;
             $file->move($this->folder_path, $filename);
             $pages->cover = $filename;
         }
@@ -79,14 +81,14 @@ class PagesController extends BaseController
         return redirect()->route($this->base_route);
     }
 
-   
+
     public function edit($id)
     {
         $pages = $this->model::find($id);
-        return view(parent::loadDefaultDataToView($this->view_path.'.edit'), compact('pages'));
+        return view(parent::loadDefaultDataToView($this->view_path . '.edit'), compact('pages'));
     }
 
-   
+
     public function update(Request $request, $id)
     {
         $pages = $this->model::find($id);
@@ -99,25 +101,27 @@ class PagesController extends BaseController
         $pages->url = $request->input('url');
         $pages->slug = Str::slug($request->title);
 
-        $validatedData = $request->validate([
-            'title' => 'required|max:1000',
-            'sub_title' => 'max:1000',
-            'description' => 'required',
-            'cover' => 'sometimes|max:12288|mimes:jpg,jpeg,png',
-        ],
-        [
-            'title.required' => 'Provide title for the post.',
-            'title.max' => 'Title length exceed.',
-            'sub_title' => 'Sub title too long.',
-            'description' => 'This field is required.',
-            'cover.required' => 'Please provide any image.',
-            'cover.max' => 'Too large file.',
-            'cover.mimes' => 'Image must be in jpg, png or jpeg format.',
-        ]);
+        $validatedData = $request->validate(
+            [
+                'title' => 'required|max:1000',
+                'sub_title' => 'max:1000',
+                'description' => 'required',
+                'cover' => 'sometimes|max:12288|mimes:jpg,jpeg,png',
+            ],
+            [
+                'title.required' => 'Provide title for the post.',
+                'title.max' => 'Title length exceed.',
+                'sub_title' => 'Sub title too long.',
+                'description' => 'This field is required.',
+                'cover.required' => 'Please provide any image.',
+                'cover.max' => 'Too large file.',
+                'cover.mimes' => 'Image must be in jpg, png or jpeg format.',
+            ]
+        );
 
-        if($request->hasfile('cover')) {
-            $destination = $this->folder_path.$pages->cover;
-            if(file_exists($destination)){
+        if ($request->hasfile('cover')) {
+            $destination = $this->folder_path . $pages->cover;
+            if (file_exists($destination)) {
                 unlink($destination);
             }
 
@@ -125,7 +129,7 @@ class PagesController extends BaseController
                 parent::createFolderIfNotExist($this->folder_path);
                 $file = $request->file('cover');
                 $extension = $file->getClientOriginalExtension();
-                $filename = time().'.'.$extension;
+                $filename = time() . '.' . $extension;
                 $file->move($this->folder_path, $filename);
                 $pages->cover = $filename;
             }
@@ -136,14 +140,14 @@ class PagesController extends BaseController
         return redirect()->route($this->base_route);
     }
 
-   
+
     public function destroy(Request $request, $id)
     {
         $pages = $this->model::find($id);
 
-        $destination = $this->folder_path.$pages->cover;
-        
-        if(file_exists($destination)){
+        $destination = $this->folder_path . $pages->cover;
+
+        if (file_exists($destination)) {
             unlink($destination);
         }
 

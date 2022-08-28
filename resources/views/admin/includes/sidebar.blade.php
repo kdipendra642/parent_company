@@ -1,5 +1,5 @@
-<div id="sidebar"  class="nav-collapse ">
-<!-- sidebar menu start-->
+<div id="sidebar" class="nav-collapse ">
+    <!-- sidebar menu start-->
     <ul class="sidebar-menu" id="nav-accordion">
         <li>
             <a class="{{ 'dashboard' == request()->path() ? 'active' : '' }}" href="/dashboard">
@@ -13,15 +13,15 @@
                 <span>Contents</span>
             </a>
             <ul class="sub">
-                <li class="{{ 'admin/category' == request()->path() ? 'active' : '' }}"><a  href="{{ route('admin.category') }}" > <i class="fa fa-list-alt"></i>  Category</a></li>
+                <li class="{{ 'admin/category' == request()->path() ? 'active' : '' }}"><a href="{{ route('admin.category') }}"> <i class="fa fa-list-alt"></i> Category</a></li>
             </ul>
             <ul class="sub">
-                <li class="{{ 'admin/posts' == request()->path() ? 'active' : '' }}"><a  href="{{ route('admin.posts') }}" > <i class="fa fa-book"></i>  Posts</a></li>
+                <li class="{{ 'admin/posts' == request()->path() ? 'active' : '' }}"><a href="{{ route('admin.posts') }}"> <i class="fa fa-book"></i> Posts</a></li>
             </ul>
             <ul class="sub">
-                <li class="{{ 'admin/pages' == request()->path() ? 'active' : '' }}"><a  href="{{ route('admin.pages') }}" > <i class="fa fa-file-o"></i>  Pages</a></li>
+                <li class="{{ 'admin/pages' == request()->path() ? 'active' : '' }}"><a href="{{ route('admin.pages') }}"> <i class="fa fa-file-o"></i> Blogs</a></li>
             </ul>
-           
+
         </li>
         <li class="sub-menu  ">
             <a href="javascript:;" class="{{ ((request()->is('admin/banner*')) || (request()->is('admin/client*')))  ? 'active open ' : '' }}">
@@ -29,21 +29,19 @@
                 <span>Accessories</span>
             </a>
             <ul class="sub">
-                <li class="{{ 'admin/banner' == request()->path() ? 'active' : '' }}"><a  href="{{ route('admin.banner') }}" > <i class="fa fa-arrows-h"></i>  Sliders</a></li>
-                <li class="{{ 'admin/client' == request()->path() ? 'active' : '' }}"><a  href="{{ route('admin.client') }}" > <i class="fa fa-user-md"></i>  Clients</a></li>
+                <li class="{{ 'admin/banner' == request()->path() ? 'active' : '' }}"><a href="{{ route('admin.banner') }}"> <i class="fa fa-arrows-h"></i> Sliders</a></li>
+                <!-- <li class="{{ 'admin/client' == request()->path() ? 'active' : '' }}"><a  href="{{ route('admin.client') }}" > <i class="fa fa-user-md"></i>  Clients</a></li> -->
             </ul>
-           
+
         </li>
         <li class="sub-menu ">
             <a href="javascript:;" class="{{ ((request()->is('admin/register*')) || (request()->is('admin/staff*')))  ? 'active open ' : '' }}">
                 <i class="fa fa-users"></i>
                 <span>Users and Staffs</span>
             </a>
-            <ul class="sub" >
+            <ul class="sub">
                 <li class="{{ 'admin/register' == request()->path() ? 'active' : '' }}"><a href="{{ route('admin.register') }}"><i class="fa fa-user"></i><span>Users</span></a></li>
-            </ul>
-            <ul class="sub" >
-                <li class="{{ 'admin/staff' == request()->path() ? 'active' : '' }}"><a href="{{ route('admin.staff') }}"><i class="fa fa-users"></i><span>Staffs</span></a></li>
+                <!-- <li class="{{ 'admin/staff' == request()->path() ? 'active' : '' }}"><a href="{{ route('admin.staff') }}"><i class="fa fa-users"></i><span>Staffs</span></a></li> -->
             </ul>
         </li>
         <li>
@@ -72,6 +70,6 @@
         </li>
 
     </ul>
-       
-<!-- sidebar menu end-->
+
+    <!-- sidebar menu end-->
 </div>

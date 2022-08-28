@@ -1,9 +1,5 @@
 @extends('admin.layouts.app')
 
-@section('css')
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-@endsection
-
 @section('content')
 
 @include('admin.common.flash_message')
@@ -18,7 +14,7 @@
                 <!-- <div class="btn-group">
                     <a href="{{ route('admin.banner.create') }}" class="btn btn-success btn-xs"><i class="fa fa-plus"> Create Slider</i></a>
                 </div> -->
-                <table class="table table-bordered table-striped" id="sliderTable">
+                <table class="display table table-bordered table-striped dataTable" id="dynamic-table" aria-describedby="dynamic-table_info">
                     <thead>
                         <tr role="row">
                             <th >#</th>
@@ -65,12 +61,3 @@
 </div>
 
 @endsection
-
-@push('scripts')
-    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js" ></script>
-    <script>
-        $(document).ready( function () {
-            $('#sliderTable').DataTable();
-        } );
-    </script>
-@endpush

@@ -2,21 +2,21 @@
 
 @section('content')
 <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
+  <div class="container">
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Board Of Directors</h2>
-          <ol>
-            <li><a href="{{ route('customer.index') }}">Home</a></li>
-            <li>Board Of Directors</li>
-          </ol>
-        </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Board Of Directors</h2>
+      <ol>
+        <li><a href="{{ route('customer.index') }}">Home</a></li>
+        <li>Board Of Directors</li>
+      </ol>
+    </div>
 
-      </div>
-    </section><!-- End Breadcrumbs -->
+  </div>
+</section><!-- End Breadcrumbs -->
 
-     <!-- ======= Our Team Section ======= -->
-     <section id="team" class="team section-bg">
+<!-- ======= Our Team Section ======= -->
+<!-- <section id="team" class="team section-bg">
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
@@ -45,5 +45,6 @@
         </div>
 
       </div>
-    </section><!-- End Our Team Section -->
+    </section> -->
+<!-- End Our Team Section -->
 @endsection
